@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using BookStore.BookOperations.CreateBook;
 using BookStore.BookOperations.DeleteBook;
 using BookStore.BookOperations.GetBookById;
 using BookStore.BookOperations.GetBooks;
 using BookStore.BookOperations.UpdateBook;
 using BookStore.DBOperations;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore
@@ -16,15 +18,17 @@ namespace BookStore
   public class BookController : ControllerBase
   {
     private readonly BookStoreDbContext _context;
-    public BookController(BookStoreDbContext context)
+    private readonly IMapper _mapper;
+    public BookController(BookStoreDbContext context, IMapper mapper)
     {
       _context = context;
+      _mapper = mapper;
     }
 
     [HttpGet]
     public IActionResult GetBooks()
     {
-      GetBooksQuery query = new GetBooksQuery(_context);
+      GetBooksQuery query = new GetBooksQuery(_context, _mapper);
       List<BooksViewModel> result = query.Handle();
       return Ok(result);
     }
@@ -32,11 +36,13 @@ namespace BookStore
     [HttpGet("{id}")]
     public IActionResult GetBookById(int id)
     {
-      GetBookByIdQuery query = new GetBookByIdQuery(_context);
+      GetBookByIdQuery query = new GetBookByIdQuery(_context, _mapper);
       GetBookByIdViewModel result;
       try
       {
         query.Id = id;
+        GetBookByIdQueryValidator validator = new GetBookByIdQueryValidator();
+        validator.ValidateAndThrow(query);
         result = query.Handle();
       }
       catch (Exception ex)
@@ -49,10 +55,12 @@ namespace BookStore
     [HttpPost]
     public IActionResult CreateBook([FromBody] CreateBookModel newBook)
     {
-      CreateBookCommand command = new CreateBookCommand(_context);
+      CreateBookCommand command = new CreateBookCommand(_context, _mapper);
       try
       {
         command.Model = newBook;
+        CreateBookCommandValidator validator = new CreateBookCommandValidator();
+        validator.ValidateAndThrow(command);
         command.Handle();
       }
       catch (Exception ex)
@@ -70,6 +78,8 @@ namespace BookStore
       {
         command.Id = id;
         command.Model = updatedBook;
+        UpdateBookCommandValidator validator = new UpdateBookCommandValidator();
+        validator.ValidateAndThrow(command);
         command.Handle();
       }
       catch (Exception ex)
@@ -86,6 +96,8 @@ namespace BookStore
       try
       {
         command.Id = id;
+        DeleteBookCommandValidator validator = new DeleteBookCommandValidator();
+        validator.ValidateAndThrow(command);
         command.Handle();
       }
       catch (Exception ex)

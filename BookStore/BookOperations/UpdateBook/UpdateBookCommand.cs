@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using AutoMapper;
 using BookStore.DBOperations;
 
 namespace BookStore.BookOperations.UpdateBook
