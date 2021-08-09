@@ -3,6 +3,7 @@ using System.Linq;
 using AutoMapper;
 using BookStore.Common;
 using BookStore.DBOperations;
+using BookStore.Services;
 
 namespace BookStore.BookOperations.GetBooks
 {
@@ -21,7 +22,6 @@ namespace BookStore.BookOperations.GetBooks
     {
       var books = _dbContext.Books.OrderBy(book => book.Id).ToList<Book>();
       List<BooksViewModel> booksVM = _mapper.Map<List<BooksViewModel>>(books);
-
       return booksVM;
     }
   }

@@ -8,6 +8,7 @@ using BookStore.BookOperations.GetBookById;
 using BookStore.BookOperations.GetBooks;
 using BookStore.BookOperations.UpdateBook;
 using BookStore.DBOperations;
+using BookStore.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,10 +20,13 @@ namespace BookStore
   {
     private readonly BookStoreDbContext _context;
     private readonly IMapper _mapper;
-    public BookController(BookStoreDbContext context, IMapper mapper)
+
+    private readonly ILoggerService _loggerService;
+    public BookController(BookStoreDbContext context, IMapper mapper, ILoggerService loggerService)
     {
       _context = context;
       _mapper = mapper;
+      _loggerService = loggerService;
     }
 
     [HttpGet]
@@ -30,6 +34,7 @@ namespace BookStore
     {
       GetBooksQuery query = new GetBooksQuery(_context, _mapper);
       List<BooksViewModel> result = query.Handle();
+      _loggerService.Log(result.Count + " kitap bulundu!");
       return Ok(result);
     }
 
