@@ -34,7 +34,6 @@ namespace BookStore
     {
       GetBooksQuery query = new GetBooksQuery(_context, _mapper);
       List<BooksViewModel> result = query.Handle();
-      _loggerService.Log(result.Count + " kitap bulundu!");
       return Ok(result);
     }
 
@@ -43,17 +42,12 @@ namespace BookStore
     {
       GetBookByIdQuery query = new GetBookByIdQuery(_context, _mapper);
       GetBookByIdViewModel result;
-      try
-      {
-        query.Id = id;
-        GetBookByIdQueryValidator validator = new GetBookByIdQueryValidator();
-        validator.ValidateAndThrow(query);
-        result = query.Handle();
-      }
-      catch (Exception ex)
-      {
-        return NotFound(ex.Message);
-      }
+
+      query.Id = id;
+      GetBookByIdQueryValidator validator = new GetBookByIdQueryValidator();
+      validator.ValidateAndThrow(query);
+      result = query.Handle();
+
       return Ok(result);
     }
 
@@ -61,17 +55,13 @@ namespace BookStore
     public IActionResult CreateBook([FromBody] CreateBookModel newBook)
     {
       CreateBookCommand command = new CreateBookCommand(_context, _mapper);
-      try
-      {
-        command.Model = newBook;
-        CreateBookCommandValidator validator = new CreateBookCommandValidator();
-        validator.ValidateAndThrow(command);
-        command.Handle();
-      }
-      catch (Exception ex)
-      {
-        return BadRequest(ex.Message);
-      }
+      command.Model = newBook;
+
+      CreateBookCommandValidator validator = new CreateBookCommandValidator();
+      validator.ValidateAndThrow(command);
+
+      command.Handle();
+
       return Ok();
     }
 
@@ -79,18 +69,13 @@ namespace BookStore
     public IActionResult UpdateBook(int id, [FromBody] UpdateBookModel updatedBook)
     {
       UpdateBookCommand command = new UpdateBookCommand(_context);
-      try
-      {
-        command.Id = id;
-        command.Model = updatedBook;
-        UpdateBookCommandValidator validator = new UpdateBookCommandValidator();
-        validator.ValidateAndThrow(command);
-        command.Handle();
-      }
-      catch (Exception ex)
-      {
-        return BadRequest(ex.Message);
-      }
+
+      command.Id = id;
+      command.Model = updatedBook;
+      UpdateBookCommandValidator validator = new UpdateBookCommandValidator();
+      validator.ValidateAndThrow(command);
+      command.Handle();
+
       return Ok();
     }
 
@@ -98,17 +83,12 @@ namespace BookStore
     public IActionResult DeleteBook(int id)
     {
       DeleteBookCommand command = new DeleteBookCommand(_context);
-      try
-      {
-        command.Id = id;
-        DeleteBookCommandValidator validator = new DeleteBookCommandValidator();
-        validator.ValidateAndThrow(command);
-        command.Handle();
-      }
-      catch (Exception ex)
-      {
-        return BadRequest(ex.Message);
-      }
+
+      command.Id = id;
+      DeleteBookCommandValidator validator = new DeleteBookCommandValidator();
+      validator.ValidateAndThrow(command);
+      command.Handle();
+
       return Ok();
     }
   }
