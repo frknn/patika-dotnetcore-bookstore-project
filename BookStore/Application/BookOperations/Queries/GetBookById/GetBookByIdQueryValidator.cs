@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace BookStore.BookOperations.GetBookById
+namespace BookStore.Application.BookOperations.Queries.GetBookById
 {
   public class GetBookByIdQueryValidator : AbstractValidator<GetBookByIdQuery>
   {

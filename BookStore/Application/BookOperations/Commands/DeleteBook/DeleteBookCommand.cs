@@ -1,8 +1,9 @@
 using System;
 using System.Linq;
 using BookStore.DBOperations;
+using BookStore.Entities;
 
-namespace BookStore.BookOperations.DeleteBook
+namespace BookStore.Application.BookOperations.Commands.DeleteBook
 {
   public class DeleteBookCommand
   {

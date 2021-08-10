@@ -3,8 +3,10 @@ using System.Linq;
 using AutoMapper;
 using BookStore.Common;
 using BookStore.DBOperations;
+using BookStore.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.BookOperations.GetBookById
+namespace BookStore.Application.BookOperations.Queries.GetBookById
 {
   public class GetBookByIdQuery
   {
@@ -21,13 +23,13 @@ namespace BookStore.BookOperations.GetBookById
 
     public GetBookByIdViewModel Handle()
     {
-      Book book = _dbContext.Books.Where(book => book.Id == Id).SingleOrDefault();
+      Book book = _dbContext.Books.Include(book => book.Genre).Where(book => book.Id == Id).SingleOrDefault();
       if (book is null)
       {
         throw new InvalidOperationException("Kitap bulunamadı.");
       }
-      GetBookByIdViewModel vm = _mapper.Map<GetBookByIdViewModel>(book);
-      return vm;
+      GetBookByIdViewModel bookVM = _mapper.Map<GetBookByIdViewModel>(book);
+      return bookVM;
     }
   }
 

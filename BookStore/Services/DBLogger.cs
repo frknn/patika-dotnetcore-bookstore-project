@@ -4,7 +4,7 @@ namespace BookStore.Services
 {
   public class DBLogger : ILoggerService
   {
-    public void Log(string message)
+    public void Write(string message)
     {
       Console.WriteLine("[DBLogger] - " + message);
     }

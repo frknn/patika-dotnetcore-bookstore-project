@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using BookStore.BookOperations.CreateBook;
-using BookStore.BookOperations.DeleteBook;
-using BookStore.BookOperations.GetBookById;
-using BookStore.BookOperations.GetBooks;
-using BookStore.BookOperations.UpdateBook;
+using BookStore.Application.BookOperations.Commands.CreateBook;
+using BookStore.Application.BookOperations.Commands.DeleteBook;
+using BookStore.Application.BookOperations.Queries.GetBookById;
+using BookStore.Application.BookOperations.Queries.GetBooks;
+using BookStore.Application.BookOperations.Commands.UpdateBook;
 using BookStore.DBOperations;
 using BookStore.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookStore
+namespace BookStore.Controllers
 {
   [ApiController]
   [Route("[Controller]s")]
@@ -20,13 +20,10 @@ namespace BookStore
   {
     private readonly BookStoreDbContext _context;
     private readonly IMapper _mapper;
-
-    private readonly ILoggerService _loggerService;
-    public BookController(BookStoreDbContext context, IMapper mapper, ILoggerService loggerService)
+    public BookController(BookStoreDbContext context, IMapper mapper)
     {
       _context = context;
       _mapper = mapper;
-      _loggerService = loggerService;
     }
 
     [HttpGet]
@@ -41,12 +38,12 @@ namespace BookStore
     public IActionResult GetBookById(int id)
     {
       GetBookByIdQuery query = new GetBookByIdQuery(_context, _mapper);
-      GetBookByIdViewModel result;
-
       query.Id = id;
+
       GetBookByIdQueryValidator validator = new GetBookByIdQueryValidator();
       validator.ValidateAndThrow(query);
-      result = query.Handle();
+
+      GetBookByIdViewModel result = query.Handle();
 
       return Ok(result);
     }

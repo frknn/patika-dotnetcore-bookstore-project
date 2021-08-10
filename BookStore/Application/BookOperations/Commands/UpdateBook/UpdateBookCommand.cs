@@ -2,8 +2,9 @@ using System;
 using System.Linq;
 using AutoMapper;
 using BookStore.DBOperations;
+using BookStore.Entities;
 
-namespace BookStore.BookOperations.UpdateBook
+namespace BookStore.Application.BookOperations.Commands.UpdateBook
 {
   public class UpdateBookCommand
   {
