@@ -25,6 +25,10 @@ namespace BookStore.Application.BookOperations.Commands.CreateBook
       {
         throw new InvalidOperationException("Kitap zaten mevcut.");
       }
+      if (_dbContext.Authors.SingleOrDefault(author => author.Id == Model.AuthorId) == null)
+      {
+        throw new InvalidOperationException("Girdiğiniz ID'ye sahip bir yazar bulunamadı. Kitap ekleyebilmek için geçerli bir yazar ID'si girmeniz gerekmektedir.");
+      }
 
       book = _mapper.Map<Book>(Model);
 
@@ -36,6 +40,7 @@ namespace BookStore.Application.BookOperations.Commands.CreateBook
   {
     public string Title { get; set; }
     public int GenreId { get; set; }
+    public int AuthorId { get; set; }
     public int PageCount { get; set; }
     public DateTime PublishDate { get; set; }
   }

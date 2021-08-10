@@ -23,11 +23,15 @@ namespace BookStore.Application.BookOperations.Commands.UpdateBook
       {
         throw new InvalidOperationException("Kitap bulunamadı.");
       }
+      if (Model.AuthorId > 0 && _dbContext.Authors.SingleOrDefault(author => author.Id == Model.AuthorId) == null)
+      {
+        throw new InvalidOperationException("Girdiğiniz ID'ye sahip bir yazar bulunamadı. Kitap güncelleyebilmek için geçerli bir yazar ID'si girmeniz gerekmektedir.");
+      }
 
       book.GenreId = Model.GenreId != default ? Model.GenreId : book.GenreId;
+      book.AuthorId = Model.AuthorId != default ? Model.AuthorId : book.AuthorId;
       book.PageCount = Model.PageCount != default ? Model.PageCount : book.PageCount;
-      book.PublishDate = Model.PublishDate != default ? Model.PublishDate : book.PublishDate;
-      book.Title = Model.Title != default ? Model.Title : book.Title;
+      book.Title = string.IsNullOrEmpty(Model.Title) ? book.Title : Model.Title;
 
       _dbContext.SaveChanges();
     }
@@ -37,7 +41,7 @@ namespace BookStore.Application.BookOperations.Commands.UpdateBook
   {
     public string Title { get; set; }
     public int GenreId { get; set; }
+    public int AuthorId { get; set; }
     public int PageCount { get; set; }
-    public DateTime PublishDate { get; set; }
   }
 }
