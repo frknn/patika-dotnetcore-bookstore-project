@@ -10,10 +10,10 @@ namespace BookStore.Application.GenreOperations.Queries.GetGenreById
   public class GetGenreByIdQuery
   {
     public int Id { get; set; }
-    private readonly BookStoreDbContext _dbContext;
+    private readonly IBookStoreDbContext _dbContext;
     private readonly IMapper _mapper;
 
-    public GetGenreByIdQuery(BookStoreDbContext dbContext, IMapper mapper)
+    public GetGenreByIdQuery(IBookStoreDbContext dbContext, IMapper mapper)
     {
       _dbContext = dbContext;
       _mapper = mapper;

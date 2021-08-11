@@ -10,8 +10,8 @@ namespace BookStore.Application.BookOperations.Commands.UpdateBook
   {
     public int Id { get; set; }
     public UpdateBookModel Model { get; set; }
-    private readonly BookStoreDbContext _dbContext;
-    public UpdateBookCommand(BookStoreDbContext dbContext)
+    private readonly IBookStoreDbContext _dbContext;
+    public UpdateBookCommand(IBookStoreDbContext dbContext)
     {
       _dbContext = dbContext;
     }
@@ -22,10 +22,6 @@ namespace BookStore.Application.BookOperations.Commands.UpdateBook
       if (book == null)
       {
         throw new InvalidOperationException("Kitap bulunamadı.");
-      }
-      if (Model.AuthorId > 0 && _dbContext.Authors.SingleOrDefault(author => author.Id == Model.AuthorId) == null)
-      {
-        throw new InvalidOperationException("Girdiğiniz ID'ye sahip bir yazar bulunamadı. Kitap güncelleyebilmek için geçerli bir yazar ID'si girmeniz gerekmektedir.");
       }
 
       book.GenreId = Model.GenreId != default ? Model.GenreId : book.GenreId;

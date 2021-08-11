@@ -8,9 +8,9 @@ namespace BookStore.Application.BookOperations.Commands.DeleteBook
   public class DeleteBookCommand
   {
     public int Id { get; set; }
-    private readonly BookStoreDbContext _dbContext;
+    private readonly IBookStoreDbContext _dbContext;
 
-    public DeleteBookCommand(BookStoreDbContext dbContext)
+    public DeleteBookCommand(IBookStoreDbContext dbContext)
     {
       _dbContext = dbContext;
     }

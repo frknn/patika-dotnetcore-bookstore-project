@@ -10,9 +10,9 @@ namespace BookStore.Application.BookOperations.Commands.CreateBook
   {
     public CreateBookModel Model { get; set; }
 
-    private readonly BookStoreDbContext _dbContext;
+    private readonly IBookStoreDbContext _dbContext;
     private readonly IMapper _mapper;
-    public CreateBookCommand(BookStoreDbContext dbContext, IMapper mapper)
+    public CreateBookCommand(IBookStoreDbContext dbContext, IMapper mapper)
     {
       _dbContext = dbContext;
       _mapper = mapper;
@@ -24,10 +24,6 @@ namespace BookStore.Application.BookOperations.Commands.CreateBook
       if (book != null)
       {
         throw new InvalidOperationException("Kitap zaten mevcut.");
-      }
-      if (_dbContext.Authors.SingleOrDefault(author => author.Id == Model.AuthorId) == null)
-      {
-        throw new InvalidOperationException("Girdiğiniz ID'ye sahip bir yazar bulunamadı. Kitap ekleyebilmek için geçerli bir yazar ID'si girmeniz gerekmektedir.");
       }
 
       book = _mapper.Map<Book>(Model);
