@@ -20,6 +20,7 @@ namespace Application.BookOperations.Commands.CreateBook
     [InlineData("", 0, 0, 0)]
     [InlineData(" ", 0, 0, 0)]
     [InlineData("Lor", 0, 0, 0)]
+    [InlineData("   Lor   ", 0, 0, 0)]
     public void WhenInvalidInputsAreGiven_Validator_ShouldReturnErrors(string title, int authorId, int genreId, int pageCount)
     {
       // arrange

@@ -19,7 +19,7 @@ namespace BookStore.Application.BookOperations.Commands.UpdateBook
     public void Handle()
     {
       Book book = _dbContext.Books.SingleOrDefault(book => book.Id == Id);
-      if (book == null)
+      if (book is null)
       {
         throw new InvalidOperationException("Kitap bulunamadı.");
       }
@@ -27,7 +27,7 @@ namespace BookStore.Application.BookOperations.Commands.UpdateBook
       book.GenreId = Model.GenreId != default ? Model.GenreId : book.GenreId;
       book.AuthorId = Model.AuthorId != default ? Model.AuthorId : book.AuthorId;
       book.PageCount = Model.PageCount != default ? Model.PageCount : book.PageCount;
-      book.Title = string.IsNullOrEmpty(Model.Title) ? book.Title : Model.Title;
+      book.Title = string.IsNullOrEmpty(Model.Title) ? book.Title : Model.Title.Trim();
 
       _dbContext.SaveChanges();
     }
@@ -35,7 +35,12 @@ namespace BookStore.Application.BookOperations.Commands.UpdateBook
 
   public class UpdateBookModel
   {
-    public string Title { get; set; }
+    public string title;
+    public string Title
+    {
+      get { return title; }
+      set { title = value.Trim(); }
+    }
     public int GenreId { get; set; }
     public int AuthorId { get; set; }
     public int PageCount { get; set; }

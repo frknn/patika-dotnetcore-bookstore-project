@@ -34,7 +34,12 @@ namespace BookStore.Application.BookOperations.Commands.CreateBook
   }
   public class CreateBookModel
   {
-    public string Title { get; set; }
+    public string title;
+    public string Title
+    {
+      get { return title; }
+      set { title = value.Trim(); }
+    }
     public int GenreId { get; set; }
     public int AuthorId { get; set; }
     public int PageCount { get; set; }
