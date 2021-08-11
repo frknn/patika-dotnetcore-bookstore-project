@@ -70,10 +70,10 @@ namespace Application.BookOperations.Commands.UpdateBook
     {
       // arrange
       UpdateBookCommand command = new UpdateBookCommand(_context);
-      command.Id = 1;
+      command.Id = 2;
       UpdateBookModel model = new UpdateBookModel()
       {
-        Title = "Hobbit",
+        Title = "A Tale of Two Cities",
         PageCount = 1000,
         GenreId = 1,
         AuthorId = 1,
