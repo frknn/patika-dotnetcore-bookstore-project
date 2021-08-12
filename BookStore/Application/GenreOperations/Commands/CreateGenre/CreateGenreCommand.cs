@@ -34,6 +34,11 @@ namespace BookStore.Application.GenreOperations.Commands.CreateGenre
 
   public class CreateGenreModel
   {
-    public string Name { get; set; }
+    public string name;
+    public string Name
+    {
+      get { return name; }
+      set { name = value.Trim(); }
+    }
   }
 }
