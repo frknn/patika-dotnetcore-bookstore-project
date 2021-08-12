@@ -32,7 +32,17 @@ namespace BookStore.Application.AuthorOperations.Commands.UpdateAuthor
   }
   public class UpdateAuthorModel
   {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    private string firstName;
+    public string FirstName
+    {
+      get { return firstName; }
+      set { firstName = value.Trim(); }
+    }
+    private string lastName;
+    public string LastName
+    {
+      get { return lastName; }
+      set { lastName = value.Trim(); }
+    }
   }
 }

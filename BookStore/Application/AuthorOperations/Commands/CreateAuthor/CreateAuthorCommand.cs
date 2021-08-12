@@ -34,8 +34,19 @@ namespace BookStore.Application.AuthorOperations.Commands.CreateAuthor
 
   public class CreateAuthorModel
   {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    private string firstName;
+    public string FirstName
+    {
+      get { return firstName; }
+      set { firstName = value.Trim(); }
+    }
+    private string lastName;
+
+    public string LastName
+    {
+      get { return lastName; }
+      set { lastName = value.Trim(); }
+    }
     public DateTime BirthDate { get; set; }
   }
 }
