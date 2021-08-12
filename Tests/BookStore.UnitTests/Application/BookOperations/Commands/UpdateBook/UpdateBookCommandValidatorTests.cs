@@ -36,7 +36,7 @@ namespace Application.BookOperations.Commands.UpdateBook
       // assert
       validationResult.Errors.Count.Should().BeGreaterThan(0);
     }
-    
+
     [Fact]
     public void WhenValidInputsAreGiven_Validator_ShouldNotReturnError()
     {
