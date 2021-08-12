@@ -1,21 +1,21 @@
-using BookStore.Application.GenreOperations.Queries.GetGenreById;
+using BookStore.Application.AuthorOperations.Queries.GetAuthorById;
 using FluentAssertions;
 using TestSetup;
 using Xunit;
 
-namespace Application.GenreOperations.Queries.GetGenreById
+namespace Application.AuthorOperations.Queries.GetAuthorById
 {
-  public class GetGenreByIdQueryValidatorTests : IClassFixture<CommonTestFixture>
+  public class GetAuthorByIdQueryValidatorTests : IClassFixture<CommonTestFixture>
   {
     [Fact]
     public void WhenNonPositiveIdIsGiven_Validator_ShouldReturnError()
     {
       // arrange
-      GetGenreByIdQuery query = new GetGenreByIdQuery(null, null);
+      GetAuthorByIdQuery query = new GetAuthorByIdQuery(null, null);
       query.Id = 0;
 
       // act
-      GetGenreByIdQueryValidator validator = new GetGenreByIdQueryValidator();
+      GetAuthorByIdQueryValidator validator = new GetAuthorByIdQueryValidator();
       var validationResult = validator.Validate(query);
 
       // // assert
@@ -26,11 +26,11 @@ namespace Application.GenreOperations.Queries.GetGenreById
     public void WhenPositiveIdIsGiven_Validator_ShouldNotReturnError()
     {
       // arrange
-      GetGenreByIdQuery query = new GetGenreByIdQuery(null, null);
+      GetAuthorByIdQuery query = new GetAuthorByIdQuery(null, null);
       query.Id = 1;
 
       // act
-      GetGenreByIdQueryValidator validator = new GetGenreByIdQueryValidator();
+      GetAuthorByIdQueryValidator validator = new GetAuthorByIdQueryValidator();
       var validationResult = validator.Validate(query);
 
       // // assert

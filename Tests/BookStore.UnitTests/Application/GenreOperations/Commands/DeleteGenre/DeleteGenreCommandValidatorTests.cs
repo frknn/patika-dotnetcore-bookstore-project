@@ -1,4 +1,3 @@
-using BookStore.Application.BookOperations.Commands.DeleteBook;
 using BookStore.Application.GenreOperations.Commands.DeleteGenre;
 using FluentAssertions;
 using TestSetup;

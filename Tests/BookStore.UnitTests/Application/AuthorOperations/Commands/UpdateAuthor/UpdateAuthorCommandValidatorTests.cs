@@ -1,5 +1,4 @@
 using BookStore.Application.AuthorOperations.Commands.UpdateAuthor;
-using BookStore.Application.BookOperations.Commands.UpdateBook;
 using FluentAssertions;
 using TestSetup;
 using Xunit;

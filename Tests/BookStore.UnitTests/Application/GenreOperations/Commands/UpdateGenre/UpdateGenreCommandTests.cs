@@ -1,8 +1,5 @@
 using System;
 using System.Linq;
-using AutoMapper;
-using BookStore.Application.BookOperations.Commands.CreateBook;
-using BookStore.Application.BookOperations.Commands.UpdateBook;
 using BookStore.Application.GenreOperations.Commands.UpdateGenre;
 using BookStore.DBOperations;
 using BookStore.Entities;

@@ -1,5 +1,4 @@
 using BookStore.Application.AuthorOperations.Commands.DeleteAuthor;
-using BookStore.Application.BookOperations.Commands.DeleteBook;
 using FluentAssertions;
 using TestSetup;
 using Xunit;

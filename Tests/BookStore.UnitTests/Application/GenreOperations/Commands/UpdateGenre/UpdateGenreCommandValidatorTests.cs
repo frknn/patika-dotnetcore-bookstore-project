@@ -1,4 +1,3 @@
-using BookStore.Application.BookOperations.Commands.UpdateBook;
 using BookStore.Application.GenreOperations.Commands.UpdateGenre;
 using FluentAssertions;
 using TestSetup;

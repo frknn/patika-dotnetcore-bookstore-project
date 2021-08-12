@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using BookStore.Application.BookOperations.Commands.DeleteBook;
 using BookStore.Application.GenreOperations.Commands.DeleteGenre;
 using BookStore.DBOperations;
 using BookStore.Entities;

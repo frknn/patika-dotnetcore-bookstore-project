@@ -1,6 +1,5 @@
 using System;
 using BookStore.Application.AuthorOperations.Commands.CreateAuthor;
-using BookStore.Application.BookOperations.Commands.CreateBook;
 using FluentAssertions;
 using TestSetup;
 using Xunit;

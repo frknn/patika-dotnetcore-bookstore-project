@@ -1,4 +1,3 @@
-using BookStore.Application.BookOperations.Commands.UpdateBook;
 using BookStore.Application.BookOperations.Queries.GetBookById;
 using FluentAssertions;
 using TestSetup;

@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using AutoMapper;
-using BookStore.Application.BookOperations.Queries.GetBookById;
 using BookStore.Application.GenreOperations.Queries.GetGenreById;
 using BookStore.DBOperations;
 using BookStore.Entities;

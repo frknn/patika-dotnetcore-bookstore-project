@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using AutoMapper;
 using BookStore.Application.AuthorOperations.Commands.CreateAuthor;
-using BookStore.Application.BookOperations.Commands.CreateBook;
 using BookStore.DBOperations;
 using BookStore.Entities;
 using FluentAssertions;

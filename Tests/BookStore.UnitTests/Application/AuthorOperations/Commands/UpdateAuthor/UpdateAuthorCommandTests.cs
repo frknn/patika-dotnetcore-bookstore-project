@@ -1,9 +1,6 @@
 using System;
 using System.Linq;
-using AutoMapper;
 using BookStore.Application.AuthorOperations.Commands.UpdateAuthor;
-using BookStore.Application.BookOperations.Commands.CreateBook;
-using BookStore.Application.BookOperations.Commands.UpdateBook;
 using BookStore.DBOperations;
 using BookStore.Entities;
 using FluentAssertions;

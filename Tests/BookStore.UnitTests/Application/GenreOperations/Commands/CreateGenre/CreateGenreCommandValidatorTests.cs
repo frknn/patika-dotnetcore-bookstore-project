@@ -1,5 +1,3 @@
-using System;
-using BookStore.Application.BookOperations.Commands.CreateBook;
 using BookStore.Application.GenreOperations.Commands.CreateGenre;
 using FluentAssertions;
 using TestSetup;

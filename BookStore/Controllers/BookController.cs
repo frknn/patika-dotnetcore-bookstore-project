@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 using BookStore.Application.BookOperations.Commands.CreateBook;
 using BookStore.Application.BookOperations.Commands.DeleteBook;
@@ -8,7 +6,6 @@ using BookStore.Application.BookOperations.Queries.GetBookById;
 using BookStore.Application.BookOperations.Queries.GetBooks;
 using BookStore.Application.BookOperations.Commands.UpdateBook;
 using BookStore.DBOperations;
-using BookStore.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,4 +1,3 @@
-using System;
 using FluentValidation;
 
 namespace BookStore.Application.GenreOperations.Commands.UpdateGenre
