@@ -36,7 +36,12 @@ namespace BookStore.Application.GenreOperations.Commands.UpdateGenre
 
   public class UpdateGenreModel
   {
-    public string Name { get; set; }
+    private string name;
+    public string Name
+    {
+      get { return name; }
+      set { name = value.Trim(); }
+    }
     public bool IsActive { get; set; }
   }
 }

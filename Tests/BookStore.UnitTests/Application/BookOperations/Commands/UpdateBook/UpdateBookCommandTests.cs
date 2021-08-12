@@ -36,11 +36,11 @@ namespace Application.BookOperations.Commands.UpdateBook
     }
 
     [Fact]
-    public void WhenDefaultInputsAreGiven_Book_ShouldNotChange()
+    public void WhenDefaultInputsAreGiven_Book_ShouldNotBeChanged()
     {
       // arrange
       UpdateBookCommand command = new UpdateBookCommand(_context);
-      command.Id = 1;
+      command.Id = 3;
       UpdateBookModel model = new UpdateBookModel()
       {
         Title = "",

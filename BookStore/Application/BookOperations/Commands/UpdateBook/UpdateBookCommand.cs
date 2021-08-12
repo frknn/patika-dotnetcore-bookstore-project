@@ -35,7 +35,7 @@ namespace BookStore.Application.BookOperations.Commands.UpdateBook
 
   public class UpdateBookModel
   {
-    public string title;
+    private string title;
     public string Title
     {
       get { return title; }

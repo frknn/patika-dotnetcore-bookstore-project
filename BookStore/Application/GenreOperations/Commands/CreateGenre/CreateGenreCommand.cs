@@ -34,7 +34,7 @@ namespace BookStore.Application.GenreOperations.Commands.CreateGenre
 
   public class CreateGenreModel
   {
-    public string name;
+    private string name;
     public string Name
     {
       get { return name; }

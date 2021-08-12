@@ -10,7 +10,7 @@ namespace TestSetup
     {
       context.Genres.AddRange(
         new Genre { Name = "Science - Fiction" },
-        new Genre { Name = "Personel Growth" },
+        new Genre { Name = "Personal Growth" },
         new Genre { Name = "Novel" }
       );
     }

@@ -5,7 +5,7 @@ using FluentAssertions;
 using TestSetup;
 using Xunit;
 
-namespace Application.GenreOperatons.Commands.CreateGenre
+namespace Application.GenreOperations.Commands.CreateGenre
 {
   public class CreateGenreCommandValidatorTests : IClassFixture<CommonTestFixture>
   {

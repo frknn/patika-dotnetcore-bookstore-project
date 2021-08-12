@@ -34,7 +34,7 @@ namespace BookStore.Application.BookOperations.Commands.CreateBook
   }
   public class CreateBookModel
   {
-    public string title;
+    private string title;
     public string Title
     {
       get { return title; }
