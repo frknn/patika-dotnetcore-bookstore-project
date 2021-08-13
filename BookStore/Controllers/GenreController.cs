@@ -6,12 +6,13 @@ using BookStore.Application.GenreOperations.Commands.UpdateGenre;
 using BookStore.Application.GenreOperations.Queries.GetGenreById;
 using BookStore.Application.GenreOperations.Queries.GetGenres;
 using BookStore.DBOperations;
-using BookStore.Services;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Controllers
 {
+  [Authorize]
   [ApiController]
   [Route("[Controller]s")]
   public class GenreController : ControllerBase

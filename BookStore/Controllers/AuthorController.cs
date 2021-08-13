@@ -7,10 +7,12 @@ using BookStore.Application.AuthorOperations.Queries.GetAuthorById;
 using BookStore.Application.AuthorOperations.Queries.GetAuthors;
 using BookStore.DBOperations;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Controllers
 {
+  [Authorize]
   [ApiController]
   [Route("[Controller]s")]
   public class AuthorController : ControllerBase
