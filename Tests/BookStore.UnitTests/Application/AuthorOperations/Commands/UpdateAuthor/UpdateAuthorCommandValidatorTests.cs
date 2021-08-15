@@ -3,7 +3,7 @@ using FluentAssertions;
 using TestSetup;
 using Xunit;
 
-namespace Application.BookOperations.Commands.UpdateBook
+namespace Application.BookOperations.Commands.UpdateAuthor
 {
   public class UpdateAuthorCommandValidatorTests : IClassFixture<CommonTestFixture>
   {
